@@ -217,7 +217,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 45, y: 270, z: 0}
---- !u!43 &566770123
+--- !u!43 &494723718
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -440,6 +440,7 @@ GameObject:
   - component: {fileID: 712583545}
   - component: {fileID: 712583544}
   - component: {fileID: 712583543}
+  - component: {fileID: 712583547}
   m_Layer: 0
   m_Name: deathZone
   m_TagString: Untagged
@@ -534,6 +535,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &712583547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712583542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e115be9a7c03aa740bf72e6cfe7fee78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1089901798
 Mesh:
   m_ObjectHideFlags: 0
@@ -947,18 +960,26 @@ PrefabInstance:
     - target: {fileID: 2794695334523098704, guid: 95912c50237c9084497857a4b181b36a, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 566770123}
+      objectReference: {fileID: 494723718}
     - target: {fileID: 2971114908947912828, guid: 95912c50237c9084497857a4b181b36a, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 566770123}
+      objectReference: {fileID: 494723718}
     - target: {fileID: 4574751433989832984, guid: 95912c50237c9084497857a4b181b36a, type: 3}
       propertyPath: m_ImplicitCom
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4574751433989832984, guid: 95912c50237c9084497857a4b181b36a, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4574751433989832984, guid: 95912c50237c9084497857a4b181b36a, type: 3}
       propertyPath: m_CenterOfMass.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4574751433989832984, guid: 95912c50237c9084497857a4b181b36a, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7238236435142277522, guid: 95912c50237c9084497857a4b181b36a, type: 3}
       propertyPath: _material
@@ -1011,7 +1032,7 @@ PrefabInstance:
     - target: {fileID: 8706822184475049983, guid: 95912c50237c9084497857a4b181b36a, type: 3}
       propertyPath: m_AdditionalVertexStreams
       value: 
-      objectReference: {fileID: 566770123}
+      objectReference: {fileID: 494723718}
     - target: {fileID: 8706822184475049983, guid: 95912c50237c9084497857a4b181b36a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -1098,8 +1119,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6122477325772817644, guid: a72fc44b41da7ed4ca4e29bdcb352253, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122477325772817644, guid: a72fc44b41da7ed4ca4e29bdcb352253, type: 3}
       propertyPath: m_CenterOfMass.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122477325772817644, guid: a72fc44b41da7ed4ca4e29bdcb352253, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
