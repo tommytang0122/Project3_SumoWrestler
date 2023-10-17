@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
         //player 1 rush
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            rig1.AddForce(player.transform.forward * 10f, ForceMode.Impulse);
+            rig1.AddForce(player.transform.forward * 2f, ForceMode.Impulse);
         }
         if (Input.GetKeyDown(KeyCode.E) && player.GetComponent<JumpAttack>().isJumping == false)
         {
@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
         //player 2 rush
         if (Input.GetKeyDown(KeyCode.O))
         {
-            rig2.AddForce(player2.transform.forward * 10f, ForceMode.Impulse);
+            rig2.AddForce(player2.transform.forward * 2f, ForceMode.Impulse);
         }
         if (Input.GetKeyDown(KeyCode.P) && player2.GetComponent<JumpAttack>().isJumping == false)
         {

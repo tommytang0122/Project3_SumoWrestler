@@ -11,17 +11,21 @@ public class NpadPlayerController : MonoBehaviour
 
     //Serialize
     [SerializeField]
-    GameObject player;
+    GameObject player1;
     [SerializeField]
     GameObject player2;
+    [SerializeField]
+    GameObject player3;
+    [SerializeField]
+    GameObject player4;
 
-    // 2 players
+
     // 4 players
     private NpadId[] npadIds = { NpadId.Handheld, NpadId.No1, NpadId.No2, NpadId.No3, NpadId.No4 };
     private NpadState npadState = new NpadState();
 
     private GameObject[] playerArray;
-
+    Rigidbody[] playerRigidbodyArray;
 
     private long[] preButtons;
     private ControllerSupportArg controllerSupportArg = new ControllerSupportArg();
@@ -43,10 +47,20 @@ public class NpadPlayerController : MonoBehaviour
             NpadJoy.SetAssignmentModeSingle(npadIds[i]);
         }
 
-        playerArray = new GameObject[3];
-        playerArray[0] = player;
-        playerArray[1] = player;
+        playerArray = new GameObject[5];
+        playerArray[0] = player1;
+        playerArray[1] = player1;
         playerArray[2] = player2;
+        playerArray[3] = player3;
+        playerArray[4] = player4;
+
+        playerRigidbodyArray = new Rigidbody[5];
+        playerRigidbodyArray[0] = player1.GetComponent<Rigidbody>();
+        playerRigidbodyArray[1] = player1.GetComponent<Rigidbody>();
+        playerRigidbodyArray[2] = player2.GetComponent<Rigidbody>();
+        playerRigidbodyArray[3] = player3.GetComponent<Rigidbody>();
+        playerRigidbodyArray[4] = player4.GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
@@ -54,7 +68,7 @@ public class NpadPlayerController : MonoBehaviour
     {
         NpadButton onButtons = 0;
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 5; i++)
         {
             NpadId npadId = npadIds[i];
             NpadStyle npadStyle = Npad.GetStyleSet(npadId);
@@ -66,51 +80,75 @@ public class NpadPlayerController : MonoBehaviour
             if (npadStyle == NpadStyle.JoyLeft)
             {
                 //isPushedEnterButton = (npadState.buttons & NpadButton.Down) != 0;
-                if (npadState.GetButton(NpadButton.StickLUp))
+                if (npadState.GetButton(NpadButton.StickLRight))
                 {
                     playerArray[i].transform.forward = new Vector3(-0.1f, 0.0f, 0.0f);
                     playerArray[i].transform.position -= new Vector3(0.1f, 0.0f, 0.0f);
                 }
-                if (npadState.GetButton(NpadButton.StickLLeft))
+                if (npadState.GetButton(NpadButton.StickLUp))
                 {
                     playerArray[i].transform.forward = new Vector3(0.0f, 0.0f, -0.1f);
                     playerArray[i].transform.position -= new Vector3(0.0f, 0.0f, 0.1f);
                 }
-                if (npadState.GetButton(NpadButton.StickLDown))
+                if (npadState.GetButton(NpadButton.StickLLeft))
                 {
                     playerArray[i].transform.forward = new Vector3(0.1f, 0.0f, 0.0f);
                     playerArray[i].transform.position += new Vector3(0.1f, 0.0f, 0.0f);
                 }
 
-                if (npadState.GetButton(NpadButton.StickLRight))
+                if (npadState.GetButton(NpadButton.StickLDown))
                 {
                     playerArray[i].transform.forward = new Vector3(0.0f, 0.0f, 0.1f);
                     playerArray[i].transform.position += new Vector3(0.0f, 0.0f, 0.1f);
+                }
+                //player rush/dodge
+                if (npadState.GetButtonDown(NpadButton.Right))
+                {
+                    playerRigidbodyArray[i].AddForce(playerArray[i].transform.forward * 1.5f, ForceMode.Impulse);
+                }
+                //player jump attack
+                if (npadState.GetButtonDown(NpadButton.Left) && playerArray[i].GetComponent<JumpAttack>().isJumping == false)
+                {
+                    playerRigidbodyArray[i].AddForce(playerArray[i].transform.up * 10f, ForceMode.Impulse);
+                    playerArray[i].GetComponent<JumpAttack>().isJumping = true;
                 }
             }
             else if(npadStyle == NpadStyle.JoyRight)
             {
-                if (npadState.GetButton(NpadButton.StickRUp))
+                if (npadState.GetButton(NpadButton.StickRLeft))
                 {
                     playerArray[i].transform.forward = new Vector3(-0.1f, 0.0f, 0.0f);
                     playerArray[i].transform.position -= new Vector3(0.1f, 0.0f, 0.0f);
                 }
-                if (npadState.GetButton(NpadButton.StickRLeft))
+                if (npadState.GetButton(NpadButton.StickRDown))
                 {
                     playerArray[i].transform.forward = new Vector3(0.0f, 0.0f, -0.1f);
                     playerArray[i].transform.position -= new Vector3(0.0f, 0.0f, 0.1f);
                 }
-                if (npadState.GetButton(NpadButton.StickRDown))
+                if (npadState.GetButton(NpadButton.StickRRight))
                 {
                     playerArray[i].transform.forward = new Vector3(0.1f, 0.0f, 0.0f);
                     playerArray[i].transform.position += new Vector3(0.1f, 0.0f, 0.0f);
                 }
 
-                if (npadState.GetButton(NpadButton.StickRRight))
+                if (npadState.GetButton(NpadButton.StickRUp))
                 {
                     playerArray[i].transform.forward = new Vector3(0.0f, 0.0f, 0.1f);
                     playerArray[i].transform.position += new Vector3(0.0f, 0.0f, 0.1f);
                 }
+
+                //player rush/dodge
+                if (npadState.GetButtonDown(NpadButton.A))
+                {
+                    playerRigidbodyArray[i].AddForce(playerArray[i].transform.forward * 1.5f, ForceMode.Impulse);
+                }
+                //player jump attack
+                if (npadState.GetButtonDown(NpadButton.Y) && playerArray[i].GetComponent<JumpAttack>().isJumping == false)
+                {
+                    playerRigidbodyArray[i].AddForce(playerArray[i].transform.up * 10f, ForceMode.Impulse);
+                    playerArray[i].GetComponent<JumpAttack>().isJumping = true;
+                }
+                
             }
         }
     }

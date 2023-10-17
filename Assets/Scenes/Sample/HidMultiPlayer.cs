@@ -126,8 +126,8 @@ public class HidMultiPlayer : MonoBehaviour
         controllerSupportArg.enableExplainText = true;
         ControllerSupport.SetExplainText(ref controllerSupportArg, "Red", NpadId.No1);
         ControllerSupport.SetExplainText(ref controllerSupportArg, "Blue", NpadId.No2);
-        ControllerSupport.SetExplainText(ref controllerSupportArg, "Green", NpadId.No3);
-        ControllerSupport.SetExplainText(ref controllerSupportArg, "Yellow", NpadId.No4);
+        ControllerSupport.SetExplainText(ref controllerSupportArg, "Purple", NpadId.No3);
+        ControllerSupport.SetExplainText(ref controllerSupportArg, "Green", NpadId.No4);
 
         Debug.Log(controllerSupportArg);
         result = ControllerSupport.Show(controllerSupportArg);

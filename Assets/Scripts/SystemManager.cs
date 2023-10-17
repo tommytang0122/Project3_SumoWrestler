@@ -11,7 +11,7 @@ public class SystemManager : MonoBehaviour
     [SerializeField]
     GameObject[] players;
 
-    private int liveplayer = 2;
+    private int liveplayer = 4;
     private int winerNumber;
     // Start is called before the first frame update
     void Start()

@@ -14,5 +14,11 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Sample/HidMultiPlayer.unity
     guid: 420c7c1c516f4724683e4eafc1b20566
+  - enabled: 0
+    path: Assets/Scenes/HidVibrationSimple.unity
+    guid: 96f55a8c61941e74da393c5dedb069a1
+  - enabled: 0
+    path: Assets/Scenes/sixSensor/Sample/HidSixAxisSensor.unity
+    guid: fd9b6f8f53dc97f409a6b27d4efa3e85
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

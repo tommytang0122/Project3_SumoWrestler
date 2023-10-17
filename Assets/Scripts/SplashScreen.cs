@@ -24,6 +24,11 @@ public class SplashScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Invoke("FadetheScreen",5.0f);
+    }
+
+    void FadetheScreen()
+    {
         if (fadein == true)
         {
             splashScreen.alpha += fadespeed * Time.deltaTime;
